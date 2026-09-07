@@ -20,6 +20,11 @@ from gateway_probe import Gateway, child_env, prepare, require_complete
 HTTP = build_opener(ProxyHandler({}))
 
 
+def digest(path):
+    with path.open('rb') as stream:
+        return hashlib.file_digest(stream, 'sha256').hexdigest()
+
+
 def request(url, body=None, key=None, timeout=120):
     headers = {'Content-Type': 'application/json'}
     if key:
@@ -60,10 +65,10 @@ def main():
     p.add_argument('--embeddings-snapshot', type=Path, required=True)
     p.add_argument('--compression-spike', action='store_true')
     args = p.parse_args()
-    if hashlib.file_digest(args.model.open('rb'), 'sha256').hexdigest() != '0ad885ffd4bb022fc4f0d33a3308fa108ef8613159d3b3a67e23abca056b7a6c':
+    if digest(args.model) != '0ad885ffd4bb022fc4f0d33a3308fa108ef8613159d3b3a67e23abca056b7a6c':
         p.error('This synthetic profile requires the pinned Qwen3.5-0.8B Q8_0 artifact')
     embeddings = args.embeddings_snapshot.resolve()
-    if hashlib.file_digest((embeddings / 'onnx/model.onnx').open('rb'), 'sha256').hexdigest() != 'ca456c06b3a9505ddfd9131408916dd79290368331e7d76bb621f1cba6bc8665':
+    if digest(embeddings / 'onnx/model.onnx') != 'ca456c06b3a9505ddfd9131408916dd79290368331e7d76bb621f1cba6bc8665':
         p.error('Embedding artifact checksum mismatch')
     for port in (19137, 19188):
         with socket.socket() as sock:
@@ -97,6 +102,8 @@ def main():
         result['inference'] = request('http://127.0.0.1:19137/v1/chat/completions', {
             'model': 'myai-m0', 'messages': [{'role': 'user', 'content': 'Reply exactly MYAI_JAN_OK'}],
             'max_tokens': 32, 'temperature': 0}, 'myai-local-spike')
+        if result['inference'].get('choices', [{}])[0].get('message', {}).get('content', '').strip() != 'MYAI_JAN_OK':
+            raise RuntimeError('Jan smoke answer mismatch')
         print('Jan real inference complete', flush=True)
         env = child_env(profile)
         env.update(HINDSIGHT_API_LLM_PROVIDER='openai', HINDSIGHT_API_LLM_MODEL='myai-m0',
@@ -112,10 +119,13 @@ def main():
         memory = start('hindsight', [str(args.hindsight.absolute()), '--host', '127.0.0.1',
                                     '--port', '19188', '--log-level', 'warning'], env)
         result['hindsight_health'] = wait_healthy(memory, 'http://127.0.0.1:19188/health')
+        if result['hindsight_health'].get('status') != 'healthy':
+            raise RuntimeError('Hindsight health response is not healthy')
         print('Hindsight healthy', flush=True)
         gateway = Gateway(args.hermes_python.absolute(), profile, args.compression_spike)
         gateway.wait(lambda e: e.get('params', {}).get('type') == 'gateway.ready')
-        sid = gateway.rpc('session.create', {'cwd': str(profile)})['session_id']
+        first_session = gateway.rpc('session.create', {'cwd': str(profile)})
+        sid = first_session['session_id']
         result['first_message'] = message(gateway, sid,
             'This is synthetic test data: my name is Mira and my favorite flower is blue iris. '
             'Remember this preference. Reply briefly without using tools.')
@@ -126,7 +136,10 @@ def main():
             recalled = request(recall_url, {'query': 'What flower does Mira prefer?',
                                           'types': ['world', 'experience', 'observation'],
                                           'budget': 'low', 'max_tokens': 512})
-            if any('iris' in r.get('text', '').lower() for r in recalled.get('results', [])):
+            if any('iris' in r.get('text', '').lower()
+                   and 'mira' in r.get('text', '').lower()
+                   and r.get('document_id') == first_session['stored_session_id']
+                   for r in recalled.get('results', [])):
                 result['retained_recall'] = recalled
                 break
             time.sleep(2)
@@ -136,7 +149,7 @@ def main():
         result['second_message'] = message(gateway, sid2,
             'Which flower does Mira prefer? Read the supplied persistent Hindsight context. '
             'Answer with the flower name only. Do not call tools or guess.')
-        result['cross_session_answer_pass'] = 'iris' in result['second_message']['params']['payload']['text'].lower()
+        result['cross_session_answer_pass'] = result['second_message']['params']['payload']['text'].strip().lower() == 'blue iris'
         if not result['cross_session_answer_pass'] and not args.compression_spike:
             raise RuntimeError('Cross-session response did not contain the retained preference')
         if args.compression_spike:
@@ -150,6 +163,8 @@ def main():
             if result['compression'].get('removed', 0) <= 0:
                 raise RuntimeError('Manual compression did not remove any active messages')
             result['after_compression'] = message(gateway, sid2, 'Reply exactly CONTINUED_OK')
+            if result['after_compression']['params']['payload']['text'].strip() != 'CONTINUED_OK':
+                raise RuntimeError('Post-compression continuation answer mismatch')
         if not result['cross_session_answer_pass']:
             raise RuntimeError('Cross-session response failed even though remaining probes were exercised')
         result['status'] = 'PASS'

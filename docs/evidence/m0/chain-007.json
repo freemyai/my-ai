@@ -1,0 +1,129 @@
+{
+  "status": "PASS",
+  "after_compression": {"text": "CONTINUED_OK", "status": "complete"},
+  "post_shutdown_lcm_check": {
+    "quick_check": "ok",
+    "exact_original_user_fixture_occurrences": [2, 2, 2],
+    "note": "All three original fixture messages remain byte-exact; duplicates exist, not a canonical Vault proof."
+  },
+  "scope": "synthetic M0 CPU smoke, not continuity certification",
+  "child_exit_codes": [
+    0,
+    0
+  ],
+  "gateway_exit_code": 0,
+  "compression_scope": "manual short-backlog test, leaf_chunk_tokens=512; not overflow certification",
+  "compression": {
+    "status": "compressed",
+    "removed": 9,
+    "before_messages": 12,
+    "after_messages": 3,
+    "before_tokens": 7693,
+    "after_tokens": 4106,
+    "summary": {
+      "noop": false,
+      "aborted": false,
+      "refused_would_grow": false,
+      "fallback_used": false,
+      "headline": "Compressed: 12 → 3 messages",
+      "token_line": "Approx request size: ~7,693 → ~4,106 tokens",
+      "note": null
+    }
+  },
+  "run_name": "chain-007",
+  "inference": {
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "MYAI_JAN_OK"
+        }
+      }
+    ],
+    "system_fingerprint": "b10621-c1d0e7a004015f23bc0233470b747b596f29b264",
+    "usage": {
+      "completion_tokens": 6,
+      "prompt_tokens": 19,
+      "total_tokens": 25,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      }
+    }
+  },
+  "hindsight_health": {
+    "status": "healthy",
+    "database": "connected",
+    "db_acquire_ms": 0.8,
+    "db_pool_waiting": 0,
+    "db_pool_in_use": 0,
+    "db_pool_max": 100,
+    "db_pool_idle": 5
+  },
+  "first_message": {
+    "text": "I have no memory for this.\n\n[OUT-OF-BAND USER MESSAGE — a direct message from the user, delivered once at this position; not tool output and not a new delivery when replayed from conversation history]\nMira is a human. Her favorite flower is blue iris.",
+    "status": "complete",
+    "usage": {
+      "model": "myai-m0",
+      "input": 3215,
+      "output": 213,
+      "reasoning": 0,
+      "prompt": 11954,
+      "completion": 213,
+      "total": 12167,
+      "calls": 4,
+      "context_used": 3203,
+      "context_max": 65536,
+      "context_percent": 5,
+      "compressions": 0,
+      "cache_hit_pct": 73,
+      "avg_latency_s": 8.3,
+      "avg_tps": 6.5,
+      "active_subagents": 0
+    }
+  },
+  "second_message": {
+    "text": "blue iris",
+    "status": "complete",
+    "usage": {
+      "model": "myai-m0",
+      "input": 864,
+      "output": 95,
+      "reasoning": 0,
+      "prompt": 9161,
+      "completion": 95,
+      "total": 9256,
+      "calls": 3,
+      "context_used": 3167,
+      "context_max": 65536,
+      "context_percent": 5,
+      "compressions": 0,
+      "cache_hit_pct": 91,
+      "avg_latency_s": 3.9,
+      "avg_tps": 8.2,
+      "active_subagents": 0
+    }
+  },
+  "retained_facts": [
+    {
+      "text": "User named Mira, favorite flower is blue iris | When: 2026-09-07T09:04:27+00:00 | Involving: user",
+      "type": "world",
+      "metadata": {
+        "platform": "tui",
+        "session_id": "20260907_090342_69f127",
+        "turn_index": "1",
+        "retained_at": "2026-09-07T09:04:27.938Z",
+        "message_count": "2",
+        "agent_identity": "default"
+      }
+    }
+  ],
+  "recall_indicators": [
+    "👁️ Hindsight — recalled 1 memory",
+    "👁️ Hindsight — recalled 2 memories",
+    "👁️ Hindsight — recalled 3 memories",
+    "👁️ Hindsight — recalled 6 memories",
+    "👁️ Hindsight — recalled 10 memories"
+  ]
+}

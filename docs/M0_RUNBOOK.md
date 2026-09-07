@@ -44,7 +44,7 @@ python3 scripts/m0/chain.py \
   --work ../.m0/chain-new-run \
   --worker src-tauri/plugins/tauri-plugin-llamacpp/target/debug/jan-llama-worker \
   --model ../.m0/models/qwen3.5-0.8b/Qwen3.5-0.8B-Q8_0.gguf \
-  --hermes-python ../.m0/runtimes/hermes-managed/bin/python \
+  --hermes-python ../.m0/runtimes/hermes-safe/bin/python \
   --hindsight ../.m0/runtimes/hindsight/bin/hindsight-local-mcp \
   --lcm ../references/hermes-lcm \
   --embeddings-snapshot /home/nvidia/.cache/huggingface/hub/models--intfloat--multilingual-e5-small/snapshots/614241f622f53c4eeff9890bdc4f31cfecc418b3
@@ -66,5 +66,8 @@ packet-capture proof that every upstream path is offline.
 
 Managed Hermes environment was installed with frozen uv dependencies and the
 `hindsight` extra; Hindsight uses frozen `hindsight-api-slim`, `embedded-db` and
-`local-onnx` extras. Python 3.12.12's SQLite warning is unresolved for shipping:
-see ADR 0005. Do not use developer smoke profiles as users' canonical data.
+`local-onnx` extras. Prefer the refreshed Python 3.12.14 / SQLite 3.53.1 candidate;
+old managed 3.12.12/3.12.13 profiles retain the warning (ADR 0005). Do not use
+developer smoke profiles as users' canonical data. Add `--compression-spike` to
+exercise public manual compression with a short 512-token leaf threshold; this
+does not test a full native context window or certify overflow recovery.

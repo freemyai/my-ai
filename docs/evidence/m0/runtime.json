@@ -1,0 +1,31 @@
+{
+  "certified": false,
+  "platform": "linux-aarch64",
+  "uv": {
+    "version": "0.12.10",
+    "archive": "uv-aarch64-unknown-linux-gnu.tar.gz",
+    "source": "https://github.com/astral-sh/uv/releases/download/0.12.10/uv-aarch64-unknown-linux-gnu.tar.gz",
+    "sha256": "9ff6b9d4665edcdd3a88dcc73cd1eb641754deb927f14e8c62ebfde6bf4f5f5e",
+    "verification": "matches the upstream release .sha256 asset"
+  },
+  "managed_python": {
+    "version": "3.12.14",
+    "build_date": "2026-09-01",
+    "sqlite_version": "3.53.1",
+    "executable_sha256": "8f7e5df472f8db8bc5ebb7cb888199365c6443f7af1788240885da075cd40415",
+    "scope": "local executable identity, not a full distribution SBOM or archive hash"
+  },
+  "jan_worker": {
+    "source_commit": "659147f4a75494a82d038edb766cab37c54e26a5",
+    "llama_cpp_commit": "c1d0e7a004015f23bc0233470b747b596f29b264",
+    "executable_sha256": "1fc526c78c4aec4dd83311490f28bfeb4cefc010c7ea67f13d5becec3b146c7e",
+    "configuration": "development CPU build; GCC 14.2.0; source unchanged",
+    "scope": "local binary identity, not a portable release artifact"
+  },
+  "tests": {
+    "managed_gateway_start_and_session": "PASS",
+    "contracts_on_refreshed_runtime": 11,
+    "original_jan_download_extension_tests": 17,
+    "age_round_trip_and_tamper_rejection": "PASS"
+  }
+}

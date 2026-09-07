@@ -24,6 +24,12 @@ Hermes warns about its WAL-reset bug and selects DELETE journaling for its own
 stores. Audit LCM and select a patched managed runtime before production; the
 Vault's WAL specification is not certification of every bundled SQLite build.
 
+Follow-up measured mitigation: updating the project-local uv catalog (0.12.10)
+provisions CPython 3.12.14 / SQLite 3.53.1. A fresh `hermes-safe` runtime passes
+gateway startup and contract tests. Python 3.12.13 from the old catalog still
+contains 3.50.4; a patch-number bump alone was not sufficient. Preserve old test
+profiles and use the new runtime for further certification.
+
 The real LCM-loaded gateway also emits `Could not apply live compression config:
 'LCMEngine' object has no attribute '_coerce_threshold_tokens_cap'`. The caller
 is Hermes `tui_gateway/session_compression.py:146`. LCM storage binding and tools

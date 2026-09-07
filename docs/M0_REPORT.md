@@ -17,12 +17,12 @@ The parent directory's `My_AI_v0.1_工程实施大纲.md` is the implementation 
 | Jan full desktop ARM64 | Native worker is not the complete Tauri app/installer | Not yet built/launched |
 | llmfit | Official 1.1.14 GNU aarch64 release archive verified against upstream SHA-256; CLI executes | PASS |
 | Hardware JSON | GB10 / CUDA / 20 cores / 121.69 GiB unified memory; only 22.56 GiB available at probe | PASS |
-| Hermes packaging | Frozen uv install, 73 packages, project-local managed Python 3.12.12; not system Python | Runs; SQLite version needs replacement |
+| Hermes packaging | Frozen uv install, 73 packages; refreshed uv 0.12.10 provisions Python 3.12.14 / SQLite 3.53.1; gateway and 11 contracts pass | Version risk mitigated; run 008 fails memory fixture |
 | Hermes public gateway | Actual `python -m tui_gateway.entry` JSON-RPC; message → Jan → final text | PASS transport; not tool capability |
 | Hindsight lifecycle | Local slim + pg0/PostgreSQL + ONNX; healthy; real retain and recall | PASS synthetic data |
 | Hermes → Hindsight | Automatic retain contains source session/turn metadata; API recall and new-session recall indicator observed | PASS memory transport |
 | Cross-session answer | Run 005 correctly answers `Blue iris` from injected memory with an explicit extraction prompt; run 004's ordinary wording fails | PASS narrow fixture; quality not certified |
-| LCM | Plugin storage binds and tools execute; live compression config warns about missing `_coerce_threshold_tokens_cap` | PARTIAL; not continuity PASS |
+| LCM | Run 007 manual compression: 12→3 active messages, ~7693→4106 request tokens; next reply `CONTINUED_OK`; raw fixture bytes preserved | PASS manual path; dynamic config warning and overflow gates remain |
 | age | Official ARM64 CLI encrypt/decrypt exact round-trip and rejects modified ciphertext | PASS CLI only; not `.myai` restore |
 | Vault draft | 11 local contracts pass: AI-scoped FKs, atomic outbox, probe isolation/protocol regression | PASS schema/probe tests; not M5 |
 | Licenses | 11 source pins with license hashes; model/embedding hashes; transitive release SBOM not complete | Source inventory; not release clearance |
@@ -60,7 +60,7 @@ The parent directory's `My_AI_v0.1_工程实施大纲.md` is the implementation 
 - [ ] Original Jan native build and start, or measured ARM64 failure with approved fallback ADR.
 - [x] Real local model message through Hermes public protocol.
 - [ ] Reliable cross-session answer: retain/injection pass, but the one passing answer in run 005 is not repeatable with this model.
-- [ ] Context engine loaded, with raw history persistence and real compaction evidence.
+- [x] Context engine loaded, raw history preserved and real manual compaction exercised (run 007).
 - [ ] 2–3× context-window continuity exercise.
 - [x] Provisioned inference/memory/gateway lifecycle managed by M0 harness; owned Jan/Hindsight exit 0 on failed test.
 - [ ] Versions, license hashes, commands and results recorded.
@@ -76,7 +76,7 @@ See [runbook](M0_RUNBOOK.md), [source lock](../upstreams.lock),
 [hardware JSON](evidence/m0/hardware.json), and
 [raw llmfit recommendations](evidence/m0/recommendations.json).
 Raw synthetic runs are retained outside Git at `../.m0/chain-001` through
-`chain-005`, including failed attempts. Run 001 was interrupted during an implicit
+`chain-008`, including failed attempts. Run 001 was interrupted during an implicit
 remote embedding check; 002 exposed provider authentication configuration; 003
 exposed tiny-model retrieval loops; 004 proved automatic retain and injection but
 failed the answer assertion. Do not erase failed runs when adding a passing case.
@@ -95,6 +95,34 @@ the answer assertion before reaching compression. A one-off passing answer is
 not a reliability result. The script now permits the independent compaction
 probe to run despite answer failure, while keeping the overall result FAIL.
 
+Run 007 exercises manual compaction with public `LCM_LEAF_CHUNK_TOKENS=512`,
+dynamic leaf sizing disabled, and a two-message fresh tail. Compaction removes
+nine active messages, then the model returns `CONTINUED_OK`. A post-shutdown
+read-only check using SQLite 3.53.1 reports `quick_check=ok`; all three original
+user fixture messages remain byte-exact in LCM storage (two occurrences each).
+This is raw-history preservation evidence, not canonical Vault migration or
+deduplication proof. Gateway, Jan and Hindsight exit 0, although background memory
+drain logs a server-disconnect during teardown: shutdown loss/retry needs testing.
+See [manual compaction evidence](evidence/m0/chain-007.json).
+
+Python 3.12.13 from the older uv catalog still linked SQLite 3.50.4. Refreshing
+only the project-local uv binary to checksum-verified 0.12.10 provisions Python
+3.12.14 with SQLite 3.53.1. A separate `hermes-safe` environment passes public
+gateway startup/session creation and all 11 contracts; old evidence/runtime
+directories remain untouched. The system Python and global uv are unchanged.
+Run 008 uses the refreshed runtime, has no SQLite vulnerability warning, and
+starts/responds through the real Jan gateway. The model consumes its four-call
+budget with invalid memory tool calls and gives an unrelated response; the
+expected preference does not become recall-visible within the deadline. This is
+another FAIL, not an end-to-end certification of the runtime change. Gateway,
+Jan and Hindsight all exit 0 and the test ports are closed. See
+[run 008](evidence/m0/chain-008.json) and [runtime hashes](evidence/m0/runtime.json).
+
+Checkpoint conclusion: native ARM64 inference, memory transport and manual
+compaction are feasible. The selected tiny fixture model is **not qualified**
+for My AI, and this moving-upstream combination is **not a release baseline**.
+Freedom Lab's validated component/model pins are the next comparison input.
+
 No pre-existing vLLM or user service was changed. Temporary test servers are
 loopback-only and stopped after each harness run. Downloaded models/toolchains
 and the explicitly named synthetic pg0 database remain for reproducibility.
@@ -104,7 +132,7 @@ and the explicitly named synthetic pg0 database remain for reproducibility.
 1. Locate the already validated Freedom Lab stack and compare exact component and
    model pins; avoid treating today's unrelated upstream heads as a certified set.
 2. Certify a capable model on Spark (including GPU, tools and Chinese), resolve
-   Hermes/LCM compatibility, replace unsafe bundled SQLite, and rerun memory QA.
+   Hermes/LCM compatibility, certify the refreshed bundled runtime, and rerun memory QA.
 3. Execute real compaction, timeout/output-limit recovery and 2–3× window tests;
    settle the smaller-context restriction before architecture freeze.
 4. Finish original desktop build/start, download pause/resume/corruption checks,

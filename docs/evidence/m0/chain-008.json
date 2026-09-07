@@ -1,0 +1,67 @@
+{
+  "status": "FAIL",
+  "scope": "synthetic M0 CPU smoke, not continuity certification",
+  "error": "TimeoutError: Hermes turn did not become recall-visible",
+  "child_exit_codes": [
+    0,
+    0
+  ],
+  "gateway_exit_code": 0,
+  "run_name": "chain-008",
+  "inference": {
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "MYAI_JAN_OK"
+        }
+      }
+    ],
+    "system_fingerprint": "b10621-c1d0e7a004015f23bc0233470b747b596f29b264",
+    "usage": {
+      "completion_tokens": 6,
+      "prompt_tokens": 19,
+      "total_tokens": 25,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      }
+    }
+  },
+  "hindsight_health": {
+    "status": "healthy",
+    "database": "connected",
+    "db_acquire_ms": 1.0,
+    "db_pool_waiting": 0,
+    "db_pool_in_use": 0,
+    "db_pool_max": 100,
+    "db_pool_idle": 5
+  },
+  "first_message": {
+    "text": "Confirmed: user specified preference for concise responses, no tools used.",
+    "status": "complete",
+    "usage": {
+      "model": "myai-m0",
+      "input": 3222,
+      "output": 148,
+      "reasoning": 0,
+      "prompt": 11990,
+      "completion": 148,
+      "total": 12138,
+      "calls": 4,
+      "context_used": 3210,
+      "context_max": 65536,
+      "context_percent": 5,
+      "compressions": 0,
+      "cache_hit_pct": 73,
+      "avg_latency_s": 4.6,
+      "avg_tps": 8.1,
+      "active_subagents": 0
+    }
+  },
+  "second_message": {},
+  "after_compression": {},
+  "retained_facts": [],
+  "recall_indicators": []
+}

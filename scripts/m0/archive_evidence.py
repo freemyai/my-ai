@@ -20,7 +20,7 @@ def main():
     inference = source.get('inference', {})
     result['inference'] = {key: inference[key] for key in ('choices', 'system_fingerprint', 'usage') if key in inference}
     result['hindsight_health'] = source.get('hindsight_health')
-    for key in ('first_message', 'second_message'):
+    for key in ('first_message', 'second_message', 'after_compression'):
         payload = source.get(key, {}).get('params', {}).get('payload', {})
         result[key] = {k: payload[k] for k in ('text', 'status', 'usage', 'error') if k in payload}
     result['retained_facts'] = [
