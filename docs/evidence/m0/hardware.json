@@ -1,0 +1,41 @@
+{
+  "captured_at": "2026-09-07T08:34:19.514572+00:00",
+  "command": [
+    "llmfit",
+    "system",
+    "--json"
+  ],
+  "result": {
+    "providers": {
+      "llama.cpp": {
+        "available": false,
+        "detection_hint": "not in PATH, set LLAMA_CPP_PATH",
+        "llama_cli_path": null,
+        "llama_server_path": null,
+        "server_running": false
+      }
+    },
+    "system": {
+      "available_ram_gb": 22.51,
+      "backend": "CUDA",
+      "cpu_cores": 20,
+      "cpu_name": "Cortex-A725",
+      "gpu_count": 1,
+      "gpu_name": "NVIDIA GB10",
+      "gpu_vram_gb": 121.69,
+      "gpus": [
+        {
+          "backend": "CUDA",
+          "count": 1,
+          "name": "NVIDIA GB10",
+          "unified_memory": true,
+          "vram_gb": 121.69
+        }
+      ],
+      "has_gpu": true,
+      "total_ram_gb": 121.69,
+      "unified_memory": true
+    }
+  },
+  "scope": "upstream raw result; not My AI certification or a measured speed"
+}

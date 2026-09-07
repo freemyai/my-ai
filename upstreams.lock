@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "certified": false,
+  "components": [
+    {
+      "name": "jan",
+      "repository": "https://github.com/janhq/jan.git",
+      "commit": "659147f4a75494a82d038edb766cab37c54e26a5",
+      "license": "Apache-2.0",
+      "license_file": "LICENSE",
+      "license_sha256": "240e79d4976dbf1d4c76e0ac1da223df97935a75497eaf8dd045771c3e92de16",
+      "usage": "source integration spike; not certified for redistribution"
+    },
+    {
+      "name": "hermes-agent",
+      "repository": "https://github.com/NousResearch/hermes-agent.git",
+      "commit": "fc8d15d7797c36cdc78ca9cd4a07187c3cc61c91",
+      "license": "MIT",
+      "license_file": "LICENSE",
+      "license_sha256": "821556e6336796450ab852d375117b48a4887e71d255794fd6318d99982a5ab6",
+      "usage": "source integration spike; not certified for redistribution"
+    },
+    {
+      "name": "hindsight",
+      "repository": "https://github.com/vectorize-io/hindsight.git",
+      "commit": "d69abe7b95f132240394ef91fd39a8c088f3cea1",
+      "license": "MIT",
+      "license_file": "LICENSE",
+      "license_sha256": "01fde0bedf83bdc185065d7af524a61690efe576a67f922eaff3a1280c17b63a",
+      "usage": "source integration spike; not certified for redistribution"
+    },
+    {
+      "name": "llmfit",
+      "repository": "https://github.com/AlexsJones/llmfit.git",
+      "commit": "18f630be4b16b99133b68c638eaa0cb2baac1093",
+      "license": "MIT",
+      "license_file": "LICENSE",
+      "license_sha256": "b52696dc0457bf58616f5017e5146b2932611b9357bb9824c7c91183fc36471f",
+      "usage": "source integration spike; not certified for redistribution"
+    },
+    {
+      "name": "hermes-lcm",
+      "repository": "https://github.com/stephenschoettler/hermes-lcm.git",
+      "commit": "8d1b1e6d3d63f5fc7b209e8d7ec1dc9b814f2e54",
+      "license": "MIT",
+      "license_file": "LICENSE",
+      "license_sha256": "2e6197fc446cea62efa627742a43a6f336cee9e73d9dd338a7f1c26696aeb264",
+      "usage": "source integration spike; not certified for redistribution"
+    },
+    {
+      "name": "huggingface-hub",
+      "repository": "https://github.com/huggingface/huggingface_hub.git",
+      "commit": "deb97775d91cb1ce2a4c254b29ad30081044257d",
+      "license": "Apache-2.0",
+      "license_file": "LICENSE",
+      "license_sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "usage": "source integration spike; not certified for redistribution"
+    },
+    {
+      "name": "modelscope-hub",
+      "repository": "https://github.com/modelscope/modelscope_hub.git",
+      "commit": "33b5050b61691c2ef2aaff504e02560f63fe3375",
+      "license": "Apache-2.0",
+      "license_file": "LICENSE",
+      "license_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "usage": "source integration spike; not certified for redistribution"
+    },
+    {
+      "name": "ollama",
+      "repository": "https://github.com/ollama/ollama.git",
+      "commit": "83ed7d9965b1ee07e0f0b29fd46e47c31f0fcab8",
+      "license": "MIT",
+      "license_file": "LICENSE",
+      "license_sha256": "5934ed2ce0d15154bcdb9c85203210abac0da4314af34081e36df4599f90b226",
+      "usage": "source integration spike; not certified for redistribution"
+    },
+    {
+      "name": "age",
+      "repository": "https://github.com/FiloSottile/age.git",
+      "commit": "b74dce4cdbe35b5e5f66c06d9612b72f89028758",
+      "license": "BSD-3-Clause",
+      "license_file": "LICENSE",
+      "license_sha256": "c5d65279d02955c0fc2294ae417c3add650d228f4f5c82bd6d531fc26c89cd96",
+      "usage": "source integration spike; not certified for redistribution"
+    },
+    {
+      "name": "restic",
+      "repository": "https://github.com/restic/restic.git",
+      "commit": "ba802d42b7294c98b62c16d1157ea3e80820c019",
+      "license": "BSD-2-Clause",
+      "license_file": "LICENSE",
+      "license_sha256": "6f08a01a9fab5b24e139a09f15cc24a73087c7bc09e3bacf099fdf2d767bf897",
+      "usage": "source integration spike; not certified for redistribution"
+    },
+    {
+      "name": "llama.cpp",
+      "repository": "https://github.com/ggml-org/llama.cpp.git",
+      "commit": "c1d0e7a004015f23bc0233470b747b596f29b264",
+      "license": "MIT",
+      "license_file": "LICENSE",
+      "license_sha256": "94f29bbed6a22c35b992c5c6ebf0e7c92f13b836b90f36f461c9cf2f0f1d010d",
+      "usage": "source integration spike; not certified for redistribution"
+    }
+  ]
+}

@@ -1,0 +1,100 @@
+{
+  "status": "FAIL",
+  "scope": "synthetic M0 CPU smoke, not continuity certification",
+  "error": "RuntimeError: Cross-session response did not contain the retained preference",
+  "child_exit_codes": [
+    0,
+    0
+  ],
+  "run_name": "chain-004",
+  "inference": {
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "MYAI_JAN_OK"
+        }
+      }
+    ],
+    "system_fingerprint": "b10621-c1d0e7a004015f23bc0233470b747b596f29b264",
+    "usage": {
+      "completion_tokens": 6,
+      "prompt_tokens": 19,
+      "total_tokens": 25,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      }
+    }
+  },
+  "hindsight_health": {
+    "status": "healthy",
+    "database": "connected",
+    "db_acquire_ms": 1.1,
+    "db_pool_waiting": 0,
+    "db_pool_in_use": 0,
+    "db_pool_max": 100,
+    "db_pool_idle": 5
+  },
+  "first_message": {
+    "text": "[OUT-OF-BAND USER MESSAGE] Mira: my favorite flower is blue iris.",
+    "status": "complete",
+    "usage": {
+      "model": "myai-m0",
+      "input": 2826,
+      "output": 19,
+      "reasoning": 0,
+      "prompt": 2826,
+      "completion": 19,
+      "total": 2845,
+      "calls": 1,
+      "context_used": 2826,
+      "context_max": 65536,
+      "context_percent": 4,
+      "compressions": 0,
+      "avg_latency_s": 12.5,
+      "avg_tps": 1.5,
+      "active_subagents": 0
+    }
+  },
+  "second_message": {
+    "text": "I don't have memory about your favorite flower.",
+    "status": "complete",
+    "usage": {
+      "model": "myai-m0",
+      "input": 724,
+      "output": 55,
+      "reasoning": 0,
+      "prompt": 5980,
+      "completion": 55,
+      "total": 6035,
+      "calls": 2,
+      "context_used": 3031,
+      "context_max": 65536,
+      "context_percent": 5,
+      "compressions": 0,
+      "cache_hit_pct": 88,
+      "avg_latency_s": 12.3,
+      "avg_tps": 2.2,
+      "active_subagents": 0
+    }
+  },
+  "retained_facts": [
+    {
+      "text": "User states their name is Mira and their favorite flower is blue iris. | When: 2026-09-07T08:55:22+00:00 | Involving: user",
+      "type": "world",
+      "metadata": {
+        "platform": "tui",
+        "session_id": "20260907_085507_017e10",
+        "turn_index": "1",
+        "retained_at": "2026-09-07T08:55:22.415Z",
+        "message_count": "2",
+        "agent_identity": "default"
+      }
+    }
+  ],
+  "recall_indicators": [
+    "👁️ Hindsight — recalled 1 memory"
+  ]
+}

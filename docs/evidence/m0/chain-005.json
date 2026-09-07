@@ -1,0 +1,100 @@
+{
+  "status": "PASS",
+  "scope": "synthetic M0 CPU smoke, not continuity certification",
+  "child_exit_codes": [
+    0,
+    0
+  ],
+  "run_name": "chain-005",
+  "inference": {
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "MYAI_JAN_OK"
+        }
+      }
+    ],
+    "system_fingerprint": "b10621-c1d0e7a004015f23bc0233470b747b596f29b264",
+    "usage": {
+      "completion_tokens": 6,
+      "prompt_tokens": 19,
+      "total_tokens": 25,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      }
+    }
+  },
+  "hindsight_health": {
+    "status": "healthy",
+    "database": "connected",
+    "db_acquire_ms": 0.9,
+    "db_pool_waiting": 0,
+    "db_pool_in_use": 0,
+    "db_pool_max": 100,
+    "db_pool_idle": 5
+  },
+  "first_message": {
+    "text": "Mira. Hermetic favor: blue iris.",
+    "status": "complete",
+    "usage": {
+      "model": "myai-m0",
+      "input": 3200,
+      "output": 191,
+      "reasoning": 0,
+      "prompt": 11925,
+      "completion": 191,
+      "total": 12116,
+      "calls": 4,
+      "context_used": 3188,
+      "context_max": 65536,
+      "context_percent": 5,
+      "compressions": 0,
+      "cache_hit_pct": 73,
+      "avg_latency_s": 8.3,
+      "avg_tps": 5.7,
+      "active_subagents": 0
+    }
+  },
+  "second_message": {
+    "text": "blue iris",
+    "status": "complete",
+    "usage": {
+      "model": "myai-m0",
+      "input": 644,
+      "output": 3,
+      "reasoning": 0,
+      "prompt": 2955,
+      "completion": 3,
+      "total": 2958,
+      "calls": 1,
+      "context_used": 2955,
+      "context_max": 65536,
+      "context_percent": 5,
+      "compressions": 0,
+      "cache_hit_pct": 78,
+      "avg_latency_s": 7.0,
+      "avg_tps": 0.4,
+      "active_subagents": 0
+    }
+  },
+  "retained_facts": [
+    {
+      "text": "User named Mira and has favorite flower blue iris | When: 2026-09-07T08:58:04+00:00 | Involving: user",
+      "type": "world",
+      "metadata": {
+        "platform": "tui",
+        "session_id": "20260907_085719_984d91",
+        "turn_index": "1",
+        "retained_at": "2026-09-07T08:58:04.614Z",
+        "message_count": "2",
+        "agent_identity": "default"
+      }
+    }
+  ],
+  "recall_indicators": [
+    "👁️ Hindsight — recalled 1 memory"
+  ]
+}

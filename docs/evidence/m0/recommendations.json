@@ -1,0 +1,261 @@
+{
+  "captured_at": "2026-09-07T08:34:20.818668+00:00",
+  "command": [
+    "llmfit",
+    "recommend",
+    "--json",
+    "--limit",
+    "3",
+    "--runtime",
+    "llamacpp",
+    "--capability",
+    "tool_use"
+  ],
+  "result": {
+    "models": [
+      {
+        "best_quant": "Q8_0",
+        "capabilities": [
+          "Tool Use"
+        ],
+        "capability_ids": [
+          "tool_use"
+        ],
+        "category": "Reasoning",
+        "context_length": 524288,
+        "disk_size_gb": 8.6,
+        "effective_context_length": 8192,
+        "estimate_basis": {
+          "assumed_context": 8192,
+          "ddr_bandwidth_gbps": null,
+          "efficiency": 0.55,
+          "gpu_bandwidth_gbps": null,
+          "local_calibration": 1.846755389143388,
+          "method": "backend_constant"
+        },
+        "estimate_confidence": "calibrated",
+        "estimate_confidence_label": "calibrated",
+        "estimated_tps": 43.7,
+        "fit_label": "Perfect",
+        "fit_level": "Perfect",
+        "gguf_sources": [
+          {
+            "provider": "unsloth",
+            "repo": "unsloth/DeepSeek-R1-0528-Qwen3-8B-GGUF"
+          },
+          {
+            "provider": "mradermacher",
+            "repo": "mradermacher/DeepSeek-R1-0528-Qwen3-8B-GGUF"
+          }
+        ],
+        "installed": false,
+        "is_moe": false,
+        "license": "mit",
+        "measured_tps": null,
+        "memory_available_gb": 121.69,
+        "memory_required_gb": 10.23,
+        "moe_offloaded_gb": null,
+        "name": "deepseek-ai/DeepSeek-R1-0528-Qwen3-8B",
+        "notes": [
+          "Context capped at 8192 tokens for estimation (model supports up to 524288; use --max-context to override)",
+          "Unified memory: GPU and CPU share the same pool",
+          "Best quantization for hardware: Q8_0 (model default: Q4_K_M)",
+          "Baseline estimated speed: 23.6 tok/s"
+        ],
+        "ollama_name": null,
+        "parameter_count": "8.2B",
+        "params_b": 8.19,
+        "prefill_tps": null,
+        "provider": "DeepSeek",
+        "release_date": "2025-05-29",
+        "run_mode": "GPU",
+        "run_mode_label": "GPU",
+        "runtime": "llama.cpp",
+        "runtime_label": "llama.cpp",
+        "score": 94.5,
+        "score_components": {
+          "context": 100.0,
+          "fit": 100.0,
+          "quality": 91.4,
+          "speed": 94.5
+        },
+        "supports_tp": [
+          1,
+          2,
+          4,
+          8
+        ],
+        "total_memory_gb": 10.23,
+        "ttft_ms": null,
+        "usable_context": 524288,
+        "use_case": "Advanced reasoning, chain-of-thought",
+        "utilization_pct": 8.4,
+        "verify_command": "llama-bench -m <path-to-Q8_0-gguf> -ngl 99 -p 512 -n 128"
+      },
+      {
+        "best_quant": "Q8_0",
+        "capabilities": [
+          "Tool Use"
+        ],
+        "capability_ids": [
+          "tool_use"
+        ],
+        "category": "Reasoning",
+        "context_length": 524288,
+        "disk_size_gb": 8.6,
+        "effective_context_length": 8192,
+        "estimate_basis": {
+          "assumed_context": 8192,
+          "ddr_bandwidth_gbps": null,
+          "efficiency": 0.55,
+          "gpu_bandwidth_gbps": null,
+          "local_calibration": 1.846755389143388,
+          "method": "backend_constant"
+        },
+        "estimate_confidence": "calibrated",
+        "estimate_confidence_label": "calibrated",
+        "estimated_tps": 43.7,
+        "fit_label": "Perfect",
+        "fit_level": "Perfect",
+        "gguf_sources": [],
+        "installed": false,
+        "is_moe": false,
+        "license": "mit",
+        "measured_tps": null,
+        "memory_available_gb": 121.69,
+        "memory_required_gb": 10.22,
+        "moe_offloaded_gb": null,
+        "name": "mlx-community/DeepSeek-R1-0528-Qwen3-8B-4bit",
+        "notes": [
+          "Context capped at 8192 tokens for estimation (model supports up to 524288; use --max-context to override)",
+          "Unified memory: GPU and CPU share the same pool",
+          "Best quantization for hardware: Q8_0 (model default: Q4_K_M)",
+          "Baseline estimated speed: 23.6 tok/s"
+        ],
+        "ollama_name": null,
+        "parameter_count": "8.2B",
+        "params_b": 8.19,
+        "prefill_tps": null,
+        "provider": "mlx-community",
+        "release_date": null,
+        "run_mode": "GPU",
+        "run_mode_label": "GPU",
+        "runtime": "llama.cpp",
+        "runtime_label": "llama.cpp",
+        "score": 94.5,
+        "score_components": {
+          "context": 100.0,
+          "fit": 100.0,
+          "quality": 91.4,
+          "speed": 94.5
+        },
+        "supports_tp": [
+          1,
+          2,
+          4,
+          8
+        ],
+        "total_memory_gb": 10.22,
+        "ttft_ms": null,
+        "usable_context": 524288,
+        "use_case": "Advanced reasoning, chain-of-thought",
+        "utilization_pct": 8.4,
+        "verify_command": "llama-bench -m <path-to-Q8_0-gguf> -ngl 99 -p 512 -n 128"
+      },
+      {
+        "best_quant": "Q8_0",
+        "capabilities": [
+          "Tool Use"
+        ],
+        "capability_ids": [
+          "tool_use"
+        ],
+        "category": "Reasoning",
+        "context_length": 524288,
+        "disk_size_gb": 8.8,
+        "effective_context_length": 8192,
+        "estimate_basis": {
+          "assumed_context": 8192,
+          "ddr_bandwidth_gbps": null,
+          "efficiency": 0.55,
+          "gpu_bandwidth_gbps": null,
+          "local_calibration": 1.846755389143388,
+          "method": "backend_constant"
+        },
+        "estimate_confidence": "calibrated",
+        "estimate_confidence_label": "calibrated",
+        "estimated_tps": 42.7,
+        "fit_label": "Perfect",
+        "fit_level": "Perfect",
+        "gguf_sources": [],
+        "installed": false,
+        "is_moe": false,
+        "license": null,
+        "measured_tps": null,
+        "memory_available_gb": 121.69,
+        "memory_required_gb": 10.42,
+        "moe_offloaded_gb": null,
+        "name": "unsloth/DeepSeek-R1-0528-Qwen3-8B-unsloth-bnb-4bit",
+        "notes": [
+          "Context capped at 8192 tokens for estimation (model supports up to 524288; use --max-context to override)",
+          "Unified memory: GPU and CPU share the same pool",
+          "Best quantization for hardware: Q8_0 (model default: Q4_K_M)",
+          "Baseline estimated speed: 23.1 tok/s"
+        ],
+        "ollama_name": null,
+        "parameter_count": "8.4B",
+        "params_b": 8.38,
+        "prefill_tps": null,
+        "provider": "unsloth",
+        "release_date": null,
+        "run_mode": "GPU",
+        "run_mode_label": "GPU",
+        "runtime": "llama.cpp",
+        "runtime_label": "llama.cpp",
+        "score": 94.1,
+        "score_components": {
+          "context": 100.0,
+          "fit": 100.0,
+          "quality": 91.4,
+          "speed": 92.4
+        },
+        "supports_tp": [
+          1,
+          2,
+          4,
+          8
+        ],
+        "total_memory_gb": 10.42,
+        "ttft_ms": null,
+        "usable_context": 524288,
+        "use_case": "Advanced reasoning, chain-of-thought",
+        "utilization_pct": 8.6,
+        "verify_command": "llama-bench -m <path-to-Q8_0-gguf> -ngl 99 -p 512 -n 128"
+      }
+    ],
+    "system": {
+      "available_ram_gb": 22.62,
+      "backend": "CUDA",
+      "cpu_cores": 20,
+      "cpu_name": "Cortex-A725",
+      "gpu_available_gb": null,
+      "gpu_count": 1,
+      "gpu_name": "NVIDIA GB10",
+      "gpu_vram_gb": 121.69,
+      "gpus": [
+        {
+          "backend": "CUDA",
+          "count": 1,
+          "memory_bandwidth_gbps": null,
+          "name": "NVIDIA GB10",
+          "unified_memory": true,
+          "vram_gb": 121.69
+        }
+      ],
+      "has_gpu": true,
+      "total_ram_gb": 121.69,
+      "unified_memory": true
+    }
+  },
+  "scope": "upstream raw result; not My AI certification or a measured speed"
+}
